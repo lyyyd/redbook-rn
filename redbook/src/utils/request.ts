@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import Apis from '../api/Apis';
 
 const instance = axios.create({
-    baseURL: 'http://192.168.2.23:7001',
+    baseURL: 'http://192.168.2.20:7001',
     timeout: 10 * 1000,
 });
 

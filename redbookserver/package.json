@@ -2,7 +2,7 @@
   "name": "RedBookServer",
   "version": "1.0.0",
   "description": "小红书仿写服务端",
-  "localHost": "http://10.10.40.225",
+  "localHost": "http://192.168.2.20",
   "private": true,
   "egg": {
     "typescript": true
