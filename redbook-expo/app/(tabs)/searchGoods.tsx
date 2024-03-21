@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import { useRouter } from "expo-router";
 
 // import icon_search from '@/assets/img/icon_search.png';
 // import icon_arrow from '@/assets/img/icon_arrow.png';
@@ -18,6 +19,7 @@ const icon_search = require('@/assets/img/icon_search.png');
 const icon_arrow = require('@/assets/img/icon_arrow.png');
 
 export default () => {
+  const router = useRouter();
   const inputRef = useRef<TextInput>(null);
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -38,6 +40,8 @@ export default () => {
     inputRef.current?.blur();
     setTimeout(() => {
       navigation.pop();
+      router.dismiss();
+      router.back();
     }, 300);
   };
 

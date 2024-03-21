@@ -42,11 +42,12 @@ export default () => {
   const startHome = () => {
     // navigation.replace('MainTab');
     // router.replace('/mainTab');
+    router.replace('/home');
   };
 
   return (
     <View style={styles.root}>
-      <Image style={styles.logo_main} source={icon_logo_main} />
+      <Image resizeMode='contain' style={styles.logo_main} source={icon_logo_main} />
     </View>
   );
 };
@@ -63,6 +64,5 @@ const styles = StyleSheet.create({
     width: 200,
     height: 105,
     marginTop: 200,
-    resizeMode: 'contain',
   },
 });

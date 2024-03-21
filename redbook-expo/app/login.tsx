@@ -18,19 +18,6 @@ import UserStore from '@/stores/UserStore';
 import Toast from '@/components/widget/Toast';
 import { useRouter } from 'expo-router';
 
-// import icon_logo_main from '@/assets/img/icon_main_logo.png';
-// import icon_unselected from '@/assets/img/icon_unselected.png';
-// import icon_selected from '@/assets/img/icon_selected.png';
-// import icon_arrow from '@/assets/img/icon_arrow.png';
-// import icon_wx_small from '@/assets/img/icon_wx_small.png';
-// import icon_triangle from '@/assets/img/icon_triangle.png';
-// import icon_eye_open from '@/assets/img/icon_eye_open.png';
-// import icon_eye_close from '@/assets/img/icon_eye_close.png';
-// import icon_exchange from '@/assets/img/icon_exchange.png';
-// import icon_wx from '@/assets/img/icon_wx.png';
-// import icon_qq from '@/assets/img/icon_qq.webp';
-// import icon_close_modal from '@/assets/img/icon_close_modal.png';
-
 const icon_logo_main = require('@/assets/img/icon_main_logo.png');
 const icon_unselected = require('@/assets/img/icon_unselected.png');
 const icon_selected = require('@/assets/img/icon_selected.png');
@@ -95,7 +82,6 @@ export default () => {
       icon_arrow: {
         width: 16,
         height: 16,
-        resizeMode: 'contain',
         marginLeft: 6,
         transform: [{rotate: '180deg'}],
       },
@@ -170,7 +156,7 @@ export default () => {
             setLoginType('input');
           }}>
           <Text style={styles.otherLoginTxt}>其它登陆方式</Text>
-          <Image style={styles.icon_arrow} source={icon_arrow} />
+          <Image resizeMode='contain' style={styles.icon_arrow} source={icon_arrow} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.wxLoginButton} activeOpacity={0.7}>
@@ -182,7 +168,7 @@ export default () => {
           <Text style={styles.oneKeyLoginTxt}>一键登陆</Text>
         </TouchableOpacity>
 
-        <Image style={styles.logoMain} source={icon_logo_main} />
+        <Image resizeMode='contain' style={styles.logoMain} source={icon_logo_main} />
       </View>
     );
   };

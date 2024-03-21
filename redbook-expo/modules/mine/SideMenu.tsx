@@ -19,6 +19,7 @@ import {remove} from '@/utils/Storage';
 
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import { useRouter } from "expo-router";
 
 // import icon_setting from '@/assets/img/icon_setting.png';
 // import icon_service from '@/assets/img/icon_service.png';
@@ -97,6 +98,7 @@ const {width: SCREEN_WIDTH} = Dimensions.get('window');
 const ContentWidth = SCREEN_WIDTH * 0.75;
 
 export default forwardRef((props: any, ref) => {
+  const router = useRouter();
   const [visible, setVisible] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
 
@@ -130,10 +132,11 @@ export default forwardRef((props: any, ref) => {
       if (item.name === '退出登陆') {
         hide();
         await remove('userInfo');
-        navigation.reset({
-          index: 0,
-          routes: [{name: 'Login'}],
-        });
+        // navigation.reset({
+        //   index: 0,
+        //   routes: [{name: 'Login'}],
+        // });
+        router.replace('/login');
       }
     },
     [],

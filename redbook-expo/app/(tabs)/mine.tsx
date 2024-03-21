@@ -19,6 +19,7 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import Heart from '@/components/Heart';
 import SideMenu, {SideMenuRef} from '@/modules/mine/SideMenu';
+import { useRouter } from "expo-router";
 
 // import icon_mine_bg from '@/assets/img/icon_mine_bg.png';
 // import icon_menu from '@/assets/img/icon_menu.png';
@@ -57,6 +58,7 @@ const EMPTY_CONFIG = [
 const {width: SCREEN_WIDTH} = Dimensions.get('window');
 
 export default observer(() => {
+  const router = useRouter();
   const sideMenuRef = useRef<SideMenuRef>(null);
 
   const {userInfo} = UserStore;
@@ -359,7 +361,9 @@ export default observer(() => {
 
   const onArticlePress = useCallback(
     (article: ArticleSimple) => () => {
-      navigation.push('ArticleDetail', {id: article.id});
+      // navigation.push('ArticleDetail', { id: article.id });
+      router.push('/articleDetail')
+      router.setParams({ id: String(article.id) });
     },
     [],
   );

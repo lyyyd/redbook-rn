@@ -10,7 +10,7 @@ import {
   TextInput,
 } from 'react-native';
 import {useLocalStore} from 'mobx-react';
-import ArticleDetailStore from './ArticleDetailStore';
+import ArticleDetailStore from '@/modules/articleDetail/ArticleDetailStore';
 import {observer} from 'mobx-react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
@@ -19,6 +19,7 @@ import {ImageSlider} from '@/components/slidePager';
 import UserStore from '@/stores/UserStore';
 import dayjs from 'dayjs';
 import Heart from '@/components/Heart';
+import { useRouter } from "expo-router";
 
 // import icon_arrow from '@/assets/img/icon_arrow.png';
 // import icon_share from '@/assets/img/icon_share.png';
@@ -43,6 +44,7 @@ type RouteParams = {
 const {width: SCREEN_WIDTH} = Dimensions.get('window');
 
 export default observer(() => {
+  const router = useRouter();
   const store = useLocalStore(() => new ArticleDetailStore());
 
   const {params} = useRoute<RouteProp<RouteParams, 'ArticleDetail'>>();
@@ -72,7 +74,11 @@ export default observer(() => {
       <View style={styles.titleLayout}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigation.pop()}>
+          onPress={() => {
+            // navigation.pop()
+            router.dismiss()
+            router.back()
+          }}>
           <Image style={styles.backImg} source={icon_arrow} />
         </TouchableOpacity>
         <Image style={styles.avatarImg} source={{uri: detail.avatarUrl}} />

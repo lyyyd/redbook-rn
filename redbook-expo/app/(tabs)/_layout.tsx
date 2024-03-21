@@ -60,34 +60,6 @@ export default function TabLayout() {
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}>
-      {/* <Tabs.Screen
-        name="one"
-        options={{
-          title: 'Tab one',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      /> */}
       <Tabs.Screen
         name="home"
         options={{
@@ -144,76 +116,25 @@ export default function TabLayout() {
           headerShown: false,
         }}
       />
+      <Tabs.Screen
+        name="articleDetail"
+        options={{
+          title: '',
+          href: null,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="searchGoods"
+        options={{
+          title: '',
+          href: null,
+          headerShown: false,
+        }}
+      />
     </Tabs>
   );
 }
-
-// export default function TabLayout() {
-//   const colorScheme = useColorScheme();
-
-//   return (
-//     <Tabs
-//       screenOptions={{
-//         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-//         // Disable the static render of the header on web
-//         // to prevent a hydration error in React Navigation v6.
-//         headerShown: useClientOnlyValue(false, true),
-//       }}>
-//       <Tabs.Screen
-//         name="index"
-//         options={{
-//           title: 'Tab One',
-//           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-//           headerRight: () => (
-//             <Link href="/modal" asChild>
-//               <Pressable>
-//                 {({ pressed }) => (
-//                   <FontAwesome
-//                     name="info-circle"
-//                     size={25}
-//                     color={Colors[colorScheme ?? 'light'].text}
-//                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-//                   />
-//                 )}
-//               </Pressable>
-//             </Link>
-//           ),
-//         }}
-//       />
-//       <Tabs.Screen
-//         name="two"
-//         options={{
-//           title: 'Tab Two',
-//           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-//         }}
-//       />
-//     </Tabs>
-//   );
-// }
-
-// export default function TabLayout() {
-//   const colorScheme = useColorScheme();
-
-//   return (
-//     <Tabs
-//       screenOptions={{
-//         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-//         // Disable the static render of the header on web
-//         // to prevent a hydration error in React Navigation v6.
-//         headerShown: useClientOnlyValue(false, true),
-//       }}
-//     >
-//       <Tabs.Screen
-//         name="Home"
-//         options={{
-//           title: "首页",
-//           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-//         }}
-//       />
-//     </Tabs>
-//   );
-// }
-
 
 const styles = StyleSheet.create({
   root: {
