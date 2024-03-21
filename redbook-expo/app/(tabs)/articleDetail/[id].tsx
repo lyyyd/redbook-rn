@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -8,18 +8,22 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-} from 'react-native';
-import {useLocalStore} from 'mobx-react';
-import ArticleDetailStore from '@/modules/articleDetail/ArticleDetailStore';
-import {observer} from 'mobx-react';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {ImageSlider} from '@/components/slidePager';
-import UserStore from '@/stores/UserStore';
-import dayjs from 'dayjs';
-import Heart from '@/components/Heart';
-import { useRouter } from "expo-router";
+} from "react-native";
+import { useLocalStore } from "mobx-react";
+import ArticleDetailStore from "@/modules/articleDetail/ArticleDetailStore";
+import { observer } from "mobx-react";
+import { RouteProp, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ImageSlider } from "@/components/slidePager";
+import UserStore from "@/stores/UserStore";
+import dayjs from "dayjs";
+import Heart from "@/components/Heart";
+import {
+  useGlobalSearchParams,
+  useLocalSearchParams,
+  useRouter,
+} from "expo-router";
 
 // import icon_arrow from '@/assets/img/icon_arrow.png';
 // import icon_share from '@/assets/img/icon_share.png';
@@ -28,12 +32,12 @@ import { useRouter } from "expo-router";
 // import icon_comment from '@/assets/img/icon_comment.png';
 // import icon_edit_comment from '@/assets/img/icon_edit_comment.png';
 
-const icon_arrow = require('@/assets/img/icon_arrow.png');
-const icon_share = require('@/assets/img/icon_share.png');
-const icon_collection = require('@/assets/img/icon_collection.png');
-const icon_collection_selected = require('@/assets/img/icon_collection_selected.png');
-const icon_comment = require('@/assets/img/icon_comment.png');
-const icon_edit_comment = require('@/assets/img/icon_edit_comment.png');
+const icon_arrow = require("@/assets/img/icon_arrow.png");
+const icon_share = require("@/assets/img/icon_share.png");
+const icon_collection = require("@/assets/img/icon_collection.png");
+const icon_collection_selected = require("@/assets/img/icon_collection_selected.png");
+const icon_comment = require("@/assets/img/icon_comment.png");
+const icon_edit_comment = require("@/assets/img/icon_edit_comment.png");
 
 type RouteParams = {
   ArticleDetail: {
@@ -41,20 +45,24 @@ type RouteParams = {
   };
 };
 
-const {width: SCREEN_WIDTH} = Dimensions.get('window');
+const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 export default observer(() => {
   const router = useRouter();
   const store = useLocalStore(() => new ArticleDetailStore());
 
-  const {params} = useRoute<RouteProp<RouteParams, 'ArticleDetail'>>();
+  // const { params } = useRoute<RouteProp<RouteParams, "ArticleDetail">>();
+  const params = useLocalSearchParams<{ id: string }>();
+  // const params = useGlobalSearchParams<{ id: any }>();
 
+  console.log("params***", params);
+  // console.log("glob***", glob);
   const navigation = useNavigation<StackNavigationProp<any>>();
 
   const [height, setHeight] = useState<number>(400);
 
   useEffect(() => {
-    store.requestArticleDetail(params.id);
+    store.requestArticleDetail(Number(params.id));
   }, []);
 
   useEffect(() => {
@@ -69,19 +77,19 @@ export default observer(() => {
   }, [store.detail?.images]);
 
   const renderTitle = () => {
-    const {detail} = store;
+    const { detail } = store;
     return (
       <View style={styles.titleLayout}>
         <TouchableOpacity
           style={styles.backButton}
           onPress={() => {
             // navigation.pop()
-            router.dismiss()
-            router.back()
-          }}>
+            router.back();
+          }}
+        >
           <Image style={styles.backImg} source={icon_arrow} />
         </TouchableOpacity>
-        <Image style={styles.avatarImg} source={{uri: detail.avatarUrl}} />
+        <Image style={styles.avatarImg} source={{ uri: detail.avatarUrl }} />
         <Text style={styles.userNameTxt}>{detail.userName}</Text>
         <Text style={styles.followTxt}>关注</Text>
         <Image style={styles.shareImg} source={icon_share} />
@@ -90,22 +98,22 @@ export default observer(() => {
   };
 
   const renderImages = () => {
-    const {detail} = store;
-    const {images} = detail;
+    const { detail } = store;
+    const { images } = detail;
     if (!images?.length) {
       return null;
     }
-    const data: any[] = images.map(i => {
-      return {img: i};
+    const data: any[] = images.map((i) => {
+      return { img: i };
     });
     return (
-      <View style={{paddingBottom: 30}}>
+      <View style={{ paddingBottom: 30 }}>
         <ImageSlider
           data={data}
           autoPlay={false}
           closeIconColor="white"
-          caroselImageStyle={{height}}
-          indicatorContainerStyle={{bottom: -40}}
+          caroselImageStyle={{ height }}
+          indicatorContainerStyle={{ bottom: -40 }}
           activeIndicatorStyle={styles.activeDot}
           inActiveIndicatorStyle={styles.inActiveDot}
         />
@@ -114,8 +122,8 @@ export default observer(() => {
   };
 
   const renderInfo = () => {
-    const {detail} = store;
-    const tags = detail.tag?.map(i => `# ${i}`).join(' ');
+    const { detail } = store;
+    const tags = detail.tag?.map((i) => `# ${i}`).join(" ");
     return (
       <>
         <Text style={styles.articleTitleTxt}>{detail.title}</Text>
@@ -130,38 +138,38 @@ export default observer(() => {
   };
 
   const renderComments = () => {
-    const {detail} = store;
+    const { detail } = store;
     const count = detail.comments?.length || 0;
-    const {userInfo} = UserStore;
+    const { userInfo } = UserStore;
 
     const styles = StyleSheet.create({
       commentsCountTxt: {
         fontSize: 14,
-        color: '#666',
+        color: "#666",
         marginTop: 20,
         marginLeft: 16,
       },
       inputLayout: {
-        width: '100%',
+        width: "100%",
         padding: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
       },
       userAvatarImg: {
         width: 32,
         height: 32,
         borderRadius: 16,
-        resizeMode: 'cover',
+        resizeMode: "cover",
       },
       commentInput: {
         flex: 1,
         height: 32,
         borderRadius: 16,
         marginLeft: 12,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: "#f0f0f0",
         fontSize: 14,
-        color: '#333',
-        textAlignVertical: 'center',
+        color: "#333",
+        textAlignVertical: "center",
         paddingVertical: 0,
         paddingHorizontal: 12,
       },
@@ -171,13 +179,13 @@ export default observer(() => {
         paddingBottom: 32,
       },
       commentItem: {
-        width: '100%',
-        flexDirection: 'row',
+        width: "100%",
+        flexDirection: "row",
       },
       cAvatar: {
         width: 36,
         height: 36,
-        resizeMode: 'cover',
+        resizeMode: "cover",
         borderRadius: 18,
       },
       contentLayout: {
@@ -186,30 +194,30 @@ export default observer(() => {
       },
       nameTxt: {
         fontSize: 12,
-        color: '#999',
+        color: "#999",
       },
       messageTxt: {
         fontSize: 14,
-        color: '#333',
+        color: "#333",
         marginTop: 6,
       },
       timeLocationTxt: {
         fontSize: 12,
-        color: '#bbb',
+        color: "#bbb",
       },
       countLayout: {
-        alignItems: 'center',
+        alignItems: "center",
       },
       fCount: {
         fontSize: 12,
-        color: '#666',
+        color: "#666",
         marginTop: 2,
       },
       divider: {
         marginLeft: 50,
         marginRight: 0,
         height: StyleSheet.hairlineWidth,
-        backgroundColor: '#eee',
+        backgroundColor: "#eee",
         marginVertical: 16,
       },
     });
@@ -217,14 +225,17 @@ export default observer(() => {
     return (
       <>
         <Text style={styles.commentsCountTxt}>
-          {count ? `共 ${count} 条评论` : '暂无评论'}
+          {count ? `共 ${count} 条评论` : "暂无评论"}
         </Text>
         <View style={styles.inputLayout}>
-          <Image style={styles.userAvatarImg} source={{uri: userInfo?.avatar}} />
+          <Image
+            style={styles.userAvatarImg}
+            source={{ uri: userInfo?.avatar }}
+          />
           <TextInput
             style={styles.commentInput}
             placeholder="说点什么吧，万一火了呢～"
-            placeholderTextColor={'#bbb'}
+            placeholderTextColor={"#bbb"}
           />
         </View>
 
@@ -234,13 +245,16 @@ export default observer(() => {
               return (
                 <View key={`${index}`} style={{}}>
                   <View style={styles.commentItem}>
-                    <Image style={styles.cAvatar} source={{uri: i.avatarUrl}} />
+                    <Image
+                      style={styles.cAvatar}
+                      source={{ uri: i.avatarUrl }}
+                    />
                     <View style={styles.contentLayout}>
                       <Text style={styles.nameTxt}>{i.userName}</Text>
                       <Text style={styles.messageTxt}>
                         {i.message}
                         <Text style={styles.timeLocationTxt}>
-                          {dayjs(i.dateTime).format('MM-DD')} {i.location}
+                          {dayjs(i.dateTime).format("MM-DD")} {i.location}
                         </Text>
                       </Text>
 
@@ -252,14 +266,15 @@ export default observer(() => {
                                 key={`${index}-${subIndex}`}
                                 style={[
                                   styles.commentItem,
-                                  {marginTop: 12, width: SCREEN_WIDTH - 80},
-                                ]}>
+                                  { marginTop: 12, width: SCREEN_WIDTH - 80 },
+                                ]}
+                              >
                                 <Image
                                   style={[
                                     styles.cAvatar,
-                                    {width: 32, height: 32},
+                                    { width: 32, height: 32 },
                                   ]}
-                                  source={{uri: j.avatarUrl}}
+                                  source={{ uri: j.avatarUrl }}
                                 />
                                 <View style={styles.contentLayout}>
                                   <Text style={styles.nameTxt}>
@@ -268,7 +283,7 @@ export default observer(() => {
                                   <Text style={styles.messageTxt}>
                                     {j.message}
                                     <Text style={styles.timeLocationTxt}>
-                                      {dayjs(j.dateTime).format('MM-DD')}{' '}
+                                      {dayjs(j.dateTime).format("MM-DD")}{" "}
                                       {j.location}
                                     </Text>
                                   </Text>
@@ -282,7 +297,7 @@ export default observer(() => {
                                 </View>
                               </View>
                             );
-                          },
+                          }
                         )}
                     </View>
 
@@ -303,7 +318,7 @@ export default observer(() => {
   };
 
   const renderBottom = () => {
-    const {detail} = store;
+    const { detail } = store;
     return (
       <View style={styles.bottomLayout}>
         <View style={styles.bottomEditLayout}>
@@ -311,7 +326,7 @@ export default observer(() => {
           <TextInput
             style={styles.bottomCommentInput}
             placeholder="说点什么"
-            placeholderTextColor={'#333'}
+            placeholderTextColor={"#333"}
           />
         </View>
         <Heart size={30} value={detail.isFavorite} />
@@ -334,7 +349,7 @@ export default observer(() => {
   return store.detail ? (
     <View style={styles.root}>
       {renderTitle()}
-      <ScrollView style={{flex: 1}} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
         {renderImages()}
         {renderInfo()}
         {renderComments()}
@@ -346,20 +361,20 @@ export default observer(() => {
 
 const styles = StyleSheet.create({
   root: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'white',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "white",
   },
   titleLayout: {
-    width: '100%',
+    width: "100%",
     height: 56,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   backButton: {
     paddingHorizontal: 16,
-    height: '100%',
-    justifyContent: 'center',
+    height: "100%",
+    justifyContent: "center",
   },
   backImg: {
     width: 20,
@@ -368,13 +383,13 @@ const styles = StyleSheet.create({
   avatarImg: {
     width: 40,
     height: 40,
-    resizeMode: 'cover',
+    resizeMode: "cover",
     borderRadius: 20,
   },
   userNameTxt: {
     fontSize: 15,
     flex: 1,
-    color: '#333',
+    color: "#333",
     marginLeft: 16,
   },
   followTxt: {
@@ -382,11 +397,11 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 15,
     borderWidth: 1,
-    borderColor: '#ff2442',
-    textAlign: 'center',
-    textAlignVertical: 'center',
+    borderColor: "#ff2442",
+    textAlign: "center",
+    textAlignVertical: "center",
     fontSize: 12,
-    color: '#ff2442',
+    color: "#ff2442",
   },
   shareImg: {
     width: 28,
@@ -396,85 +411,85 @@ const styles = StyleSheet.create({
   activeDot: {
     width: 6,
     height: 6,
-    backgroundColor: '#ff2442',
+    backgroundColor: "#ff2442",
     borderRadius: 3,
   },
   inActiveDot: {
     width: 6,
     height: 6,
-    backgroundColor: '#c0c0c0',
+    backgroundColor: "#c0c0c0",
     borderRadius: 3,
   },
   articleTitleTxt: {
     fontSize: 18,
-    color: '#333',
-    fontWeight: 'bold',
+    color: "#333",
+    fontWeight: "bold",
     paddingHorizontal: 16,
   },
   descTxt: {
     fontSize: 15,
-    color: '#333',
+    color: "#333",
     marginTop: 6,
     paddingHorizontal: 16,
   },
   tagsTxt: {
     fontSize: 15,
-    color: '#305090',
+    color: "#305090",
     marginTop: 6,
     paddingHorizontal: 16,
   },
   timeAndLocationTxt: {
     fontSize: 12,
-    color: '#bbb',
+    color: "#bbb",
     marginVertical: 16,
     marginLeft: 16,
   },
   line: {
     marginHorizontal: 16,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#eee',
+    backgroundColor: "#eee",
   },
   bottomLayout: {
-    width: '100%',
+    width: "100%",
     height: 64,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 16,
     borderTopWidth: 1,
-    borderTopColor: '#eee',
+    borderTopColor: "#eee",
   },
   bottomEditLayout: {
     height: 40,
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     borderRadius: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 12,
     marginRight: 12,
   },
   editImg: {
     width: 20,
     height: 20,
-    tintColor: '#333',
+    tintColor: "#333",
   },
   bottomCommentInput: {
-    height: '100%',
+    height: "100%",
     fontSize: 16,
-    color: '#333',
-    textAlignVertical: 'center',
+    color: "#333",
+    textAlignVertical: "center",
     paddingVertical: 0,
   },
   bottomCount: {
     fontSize: 16,
-    color: '#333',
-    fontWeight: 'bold',
+    color: "#333",
+    fontWeight: "bold",
     marginLeft: 8,
   },
   bottomIcon: {
     width: 30,
     height: 30,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginLeft: 12,
   },
 });

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   Text,
@@ -7,16 +7,16 @@ import {
   TouchableOpacity,
   LayoutAnimation,
   TextInput,
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { useRouter } from "expo-router";
 
 // import icon_search from '@/assets/img/icon_search.png';
 // import icon_arrow from '@/assets/img/icon_arrow.png';
 
-const icon_search = require('@/assets/img/icon_search.png');
-const icon_arrow = require('@/assets/img/icon_arrow.png');
+const icon_search = require("@/assets/img/icon_search.png");
+const icon_arrow = require("@/assets/img/icon_arrow.png");
 
 export default () => {
   const router = useRouter();
@@ -40,7 +40,6 @@ export default () => {
     inputRef.current?.blur();
     setTimeout(() => {
       navigation.pop();
-      router.dismiss();
       router.back();
     }, 300);
   };
@@ -59,7 +58,7 @@ export default () => {
             ref={inputRef}
             style={styles.searchTxt}
             placeholder="纯粮小麦粉"
-            placeholderTextColor={'#bbb'}
+            placeholderTextColor={"#bbb"}
           />
         </View>
 
@@ -73,33 +72,33 @@ export default () => {
 
 const styles = StyleSheet.create({
   root: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'transparent',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "transparent",
   },
   backButton: {
-    height: '100%',
+    height: "100%",
     paddingLeft: 16,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   backImg: {
     width: 20,
     height: 20,
   },
   titleLayout: {
-    width: '100%',
+    width: "100%",
     height: 40,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "white",
   },
   searchLayout: {
     height: 32,
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: "#f0f0f0",
     borderRadius: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 16,
     marginLeft: 16,
   },
@@ -109,7 +108,7 @@ const styles = StyleSheet.create({
   },
   searchTxt: {
     fontSize: 14,
-    color: '#bbb',
+    color: "#bbb",
     marginLeft: 6,
     paddingHorizontal: 8,
     paddingVertical: 0,
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
   },
   searchBotton: {
     fontSize: 16,
-    color: '#666',
+    color: "#666",
     marginHorizontal: 12,
   },
 });

@@ -20,7 +20,7 @@ import { save } from "@/utils/Storage";
 
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { useRouter } from "expo-router";
+import { router, useRouter } from "expo-router";
 // import {
 //   checkUpdate,
 //   downloadUpdate,
@@ -37,7 +37,7 @@ import { useRouter } from "expo-router";
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 export default observer(() => {
-  const router = useRouter();
+  // const router = useRouter();
   const store = useLocalStore(() => new HomeStore());
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -94,9 +94,10 @@ export default observer(() => {
 
   const onArticlePress = useCallback(
     (article: ArticleSimple) => () => {
-      // navigation.push("articleDetail", { id: article.id });
-      router.push('/articleDetail');
-      router.setParams({ id: String(article.id) });
+      console.log("article.id", article.id);
+      // navigation.push("/articleDetail", { id: article.id });
+      router.push(`/articleDetail/${article.id}`);
+      // router.setParams({ id: String(article.id) });
     },
     []
   );
