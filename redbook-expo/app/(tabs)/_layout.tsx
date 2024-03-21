@@ -15,6 +15,89 @@ function TabBarIcon(props: {
   return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
+
+  return (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        // Disable the static render of the header on web
+        // to prevent a hydration error in React Navigation v6.
+        headerShown: useClientOnlyValue(false, true),
+      }}>
+      {/* <Tabs.Screen
+        name="one"
+        options={{
+          title: 'Tab one',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="info-circle"
+                    size={25}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="two"
+        options={{
+          title: 'Tab Two',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      /> */}
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: '首页',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="shop"
+        options={{
+          title: '购物',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="publish"
+        options={{
+          title: '发布',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="message"
+        options={{
+          title: '消息',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false,
+        }}
+      />
+      <Tabs.Screen
+        name="mine"
+        options={{
+          title: '我',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          headerShown: false,
+        }}
+      />
+    </Tabs>
+  );
+}
+
 // export default function TabLayout() {
 //   const colorScheme = useColorScheme();
 
@@ -58,25 +141,25 @@ function TabBarIcon(props: {
 //   );
 // }
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+// export default function TabLayout() {
+//   const colorScheme = useColorScheme();
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}
-    >
-      <Tabs.Screen
-        name="Home"
-        options={{
-          title: "首页",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
-}
+//   return (
+//     <Tabs
+//       screenOptions={{
+//         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+//         // Disable the static render of the header on web
+//         // to prevent a hydration error in React Navigation v6.
+//         headerShown: useClientOnlyValue(false, true),
+//       }}
+//     >
+//       <Tabs.Screen
+//         name="Home"
+//         options={{
+//           title: "首页",
+//           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+//         }}
+//       />
+//     </Tabs>
+//   );
+// }
