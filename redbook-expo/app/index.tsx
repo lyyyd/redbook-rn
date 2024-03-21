@@ -4,12 +4,14 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {load} from '@/utils/Storage';
 import UserStore from '@/stores/UserStore';
+import { useRouter } from 'expo-router';
 
 // import icon_logo_main from '@/assets/img/icon_main_logo.png';
 const icon_logo_main = require('@/assets/img/icon_main_logo.png');
 
 export default () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,11 +35,13 @@ export default () => {
   };
 
   const startLogin = () => {
-    navigation.replace('Login');
+    // navigation.replace('login');
+    router.replace('/login');
   };
 
   const startHome = () => {
-    navigation.replace('MainTab');
+    // navigation.replace('MainTab');
+    // router.replace('/mainTab');
   };
 
   return (

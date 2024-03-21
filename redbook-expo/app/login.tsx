@@ -16,6 +16,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {formatPhone, replaceBlank} from '@/utils/StringUtil';
 import UserStore from '@/stores/UserStore';
 import Toast from '@/components/widget/Toast';
+import { useRouter } from 'expo-router';
 
 // import icon_logo_main from '@/assets/img/icon_main_logo.png';
 // import icon_unselected from '@/assets/img/icon_unselected.png';
@@ -45,6 +46,7 @@ const icon_close_modal = require('@/assets/img/icon_close_modal.png');
 
 
 export default () => {
+  const router = useRouter();
   const [loginType, setLoginType] = useState<'quick' | 'input'>('quick');
   const [check, setCheck] = useState<boolean>(false);
   const [eyeOpen, setEyeOpen] = useState<boolean>(true);
@@ -62,7 +64,8 @@ export default () => {
 
     UserStore.requestLogin(replaceBlank(phone), pwd, (success: boolean) => {
       if (success) {
-        navigation.replace('MainTab');
+        // navigation.replace('MainTab');
+        router.replace('/home');
       } else {
         Toast.show('登陆失败，请检查用户名和密码');
       }

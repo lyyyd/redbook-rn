@@ -214,7 +214,7 @@ export default observer(() => {
           {count ? `共 ${count} 条评论` : '暂无评论'}
         </Text>
         <View style={styles.inputLayout}>
-          <Image style={styles.userAvatarImg} source={{uri: userInfo.avatar}} />
+          <Image style={styles.userAvatarImg} source={{uri: userInfo?.avatar}} />
           <TextInput
             style={styles.commentInput}
             placeholder="说点什么吧，万一火了呢～"

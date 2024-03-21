@@ -11,14 +11,14 @@ import {
   RefreshControl,
 } from 'react-native';
 import UserStore from '@/stores/UserStore';
-import MineStore from '@/(modules)/mine/MineStore';
+import MineStore from '@/modules/mine/MineStore';
 import {useLocalStore} from 'mobx-react';
 import {observer} from 'mobx-react';
 import Empty from '@/components/Empty';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import Heart from '@/components/Heart';
-import SideMenu, {SideMenuRef} from '@/(modules)/mine/SideMenu';
+import SideMenu, {SideMenuRef} from '@/modules/mine/SideMenu';
 
 // import icon_mine_bg from '@/assets/img/icon_mine_bg.png';
 // import icon_menu from '@/assets/img/icon_menu.png';

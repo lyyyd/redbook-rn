@@ -9,17 +9,18 @@ import {
   Platform,
 } from "react-native";
 import { useLocalStore } from "mobx-react";
-import HomeStore from "@/(modules)/home/HomeStore";
+import HomeStore from "@/modules/home/HomeStore";
 import { observer } from "mobx-react";
 import FlowList from "@/components/flowlist/FlowList.js";
 import ResizeImage from "@/components/ResizeImage";
 import Heart from "@/components/Heart";
-import TitleBar from "@/(modules)/home/components/TitleBar";
-import CategoryList from "@/(modules)/home/components/CategoryList";
+import TitleBar from "@/modules/home/components/TitleBar";
+import CategoryList from "@/modules/home/components/CategoryList";
 import { save } from "@/utils/Storage";
 
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { useRouter } from "expo-router";
 // import {
 //   checkUpdate,
 //   downloadUpdate,
@@ -36,6 +37,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 export default observer(() => {
+  const router = useRouter();
   const store = useLocalStore(() => new HomeStore());
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -92,7 +94,9 @@ export default observer(() => {
 
   const onArticlePress = useCallback(
     (article: ArticleSimple) => () => {
-      navigation.push("ArticleDetail", { id: article.id });
+      // navigation.push("articleDetail", { id: article.id });
+      router.push('/articleDetail');
+      router.setParams({ id: String(article.id) });
     },
     []
   );

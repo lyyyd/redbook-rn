@@ -36,6 +36,7 @@
     "@types/mocha": "10",
     "@types/node": "18",
     "egg-bin": "6",
+    "egg-cors": "^3.0.0",
     "egg-mock": "5",
     "eslint": "8",
     "eslint-config-egg": "12",

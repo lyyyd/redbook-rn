@@ -9,9 +9,9 @@ import {
   GestureResponderEvent,
 } from 'react-native';
 import {useLocalStore} from 'mobx-react';
-import MessageStore from '@/(modules)/message/MessageStore';
+import MessageStore from '@/modules/message/MessageStore';
 import {observer} from 'mobx-react';
-import FloatMenu, {FloatMenuRef} from '@/(modules)/message/FloatMenu';
+import FloatMenu, {FloatMenuRef} from '@/modules/message/FloatMenu';
 import Empty from '@/components/Empty';
 
 // import icon_star from '@/assets/img/icon_star.png';
