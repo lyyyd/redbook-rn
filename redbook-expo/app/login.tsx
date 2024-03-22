@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
@@ -10,29 +10,58 @@ import {
   LayoutAnimation,
 } from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-import {formatPhone, replaceBlank} from '@/utils/StringUtil';
+import { formatPhone, replaceBlank } from '@/utils/StringUtil';
 import UserStore from '@/stores/UserStore';
 import Toast from '@/components/widget/Toast';
 import { useRouter } from 'expo-router';
+import { Asset, useAssets } from 'expo-asset';
 
-const icon_logo_main = require('@/assets/img/icon_main_logo.png');
-const icon_unselected = require('@/assets/img/icon_unselected.png');
-const icon_selected = require('@/assets/img/icon_selected.png');
-const icon_arrow = require('@/assets/img/icon_arrow.png');
-const icon_wx_small = require('@/assets/img/icon_wx_small.png');
-const icon_triangle = require('@/assets/img/icon_triangle.png');
-const icon_eye_open = require('@/assets/img/icon_eye_open.png');
-const icon_eye_close = require('@/assets/img/icon_eye_close.png');
-const icon_exchange = require('@/assets/img/icon_exchange.png');
-const icon_wx = require('@/assets/img/icon_wx.png');
-const icon_qq = require('@/assets/img/icon_qq.webp');
-const icon_close_modal = require('@/assets/img/icon_close_modal.png');
-
+// const icon_logo_main = require('@/assets/img/icon_main_logo.png');
+// const icon_unselected = require('@/assets/img/icon_unselected.png');
+// const icon_selected = require('@/assets/img/icon_selected.png');
+// const icon_arrow = require('@/assets/img/icon_arrow.png');
+// const icon_wx_small = require('@/assets/img/icon_wx_small.png');
+// const icon_triangle = require('@/assets/img/icon_triangle.png');
+// const icon_eye_open = require('@/assets/img/icon_eye_open.png');
+// const icon_eye_close = require('@/assets/img/icon_eye_close.png');
+// const icon_exchange = require('@/assets/img/icon_exchange.png');
+// const icon_wx = require('@/assets/img/icon_wx.png');
+// const icon_qq = require('@/assets/img/icon_qq.webp');
+// const icon_close_modal = require('@/assets/img/icon_close_modal.png');
 
 export default () => {
+  const [assets, error] = useAssets([
+    require("@/assets/img/icon_main_logo.png"),
+    require("@/assets/img/icon_unselected.png"),
+    require("@/assets/img/icon_selected.png"),
+    require("@/assets/img/icon_arrow.png"),
+    require("@/assets/img/icon_wx_small.png"),
+    require("@/assets/img/icon_triangle.png"),
+    require("@/assets/img/icon_eye_open.png"),
+    require("@/assets/img/icon_eye_close.png"),
+    require("@/assets/img/icon_exchange.png"),
+    require("@/assets/img/icon_wx.png"),
+    require("@/assets/img/icon_qq.webp"),
+    require("@/assets/img/icon_close_modal.png"),
+  ]);
+  const [
+    icon_logo_main,
+    icon_unselected,
+    icon_selected,
+    icon_arrow,
+    icon_wx_small,
+    icon_triangle,
+    icon_eye_open,
+    icon_eye_close,
+    icon_exchange,
+    icon_wx,
+    icon_qq,
+    icon_close_modal
+  ] = assets ? assets : [];
+
   const router = useRouter();
   const [loginType, setLoginType] = useState<'quick' | 'input'>('quick');
   const [check, setCheck] = useState<boolean>(false);
@@ -83,7 +112,7 @@ export default () => {
         width: 16,
         height: 16,
         marginLeft: 6,
-        transform: [{rotate: '180deg'}],
+        transform: [{ rotate: '180deg' }],
       },
       wxLoginButton: {
         width: '100%',

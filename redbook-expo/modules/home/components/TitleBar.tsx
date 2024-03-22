@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
 
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export default ({ tab, onTabChanged }: Props) => {
+  const router = useRouter();
   const [tabIndex, setTabIndex] = useState<number>(1);
 
   useEffect(() => {
@@ -20,7 +22,9 @@ export default ({ tab, onTabChanged }: Props) => {
 
   return (
     <View style={styles.titleLayout}>
-      <TouchableOpacity style={styles.dailyButton}>
+      <TouchableOpacity style={styles.dailyButton} onPress={() => {
+        router.push("/one");
+      }}>
         <Image style={styles.icon} source={icon_daily} />
       </TouchableOpacity>
 
