@@ -21,7 +21,7 @@ export default function TabOneScreen() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => {
-        router.push('/picker');
+        router.push('/three');
         // router.push("/one");
       }}>
         <Text style={styles.tabTxtSelected}>

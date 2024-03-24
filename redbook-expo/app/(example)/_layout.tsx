@@ -56,18 +56,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="three"
+        options={{
+          title: 'Tab three',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="camera"
         options={{
           title: 'Tab camera',
           href: null,
           headerShown: false,
-        }}
-      />
-      <Tabs.Screen
-        name="picker"
-        options={{
-          title: 'Tab picker',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </Tabs>
