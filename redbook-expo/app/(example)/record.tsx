@@ -8,6 +8,7 @@ import {
     Text,
     TouchableHighlight,
     View,
+    ScrollView
 } from "react-native";
 import Slider from "@react-native-community/slider";
 import { Audio, AVPlaybackStatus, InterruptionModeAndroid, InterruptionModeIOS } from "expo-av";
@@ -85,7 +86,9 @@ export default function App() {
         })();
         _askForPermissions();
     }, []);
-
+    /**
+     * 请求权限
+     */
     const _askForPermissions = async () => {
         try {
             if (permissionResponse && permissionResponse?.status !== 'granted') {
@@ -101,7 +104,10 @@ export default function App() {
         console.log('1.debug Permission ****:', permissionResponse && permissionResponse.status === "granted");
     };
 
-
+    /**
+     * 更新页面音频播放状态
+     * @param status 
+     */
     const _updateScreenForSoundStatus = (status: AVPlaybackStatus) => {
         if (status.isLoaded) {
             setState(prevState => ({
@@ -128,7 +134,10 @@ export default function App() {
             }
         }
     };
-
+    /**
+     * 更新页面录音状态
+     * @param status 
+     */
     const _updateScreenForRecordingStatus = (status: Audio.RecordingStatus) => {
         if (status.canRecord) {
             setState(prevState => ({
@@ -147,7 +156,9 @@ export default function App() {
             }
         }
     };
-
+    /**
+     * 停止播放并开始录音
+     */
     const _stopPlaybackAndBeginRecording = async () => {
         setIsLoading(true);
         if (sound !== null) {
@@ -181,7 +192,10 @@ export default function App() {
         console.log('5.debug', recording)
         setIsLoading(false);
     }
-
+    /**
+     * 停止录音并启用播放
+     * @returns 
+     */
     const _stopRecordingAndEnablePlayback = async () => {
         setIsLoading(true);
         if (!recording) {
@@ -227,7 +241,9 @@ export default function App() {
         setSound(sound);
         setIsLoading(false);
     }
-
+    /**
+     * 录音按钮点击事件
+     */
     const _onRecordPressed = () => {
         if (state.isRecording) {
             _stopRecordingAndEnablePlayback();
@@ -235,7 +251,9 @@ export default function App() {
             _stopPlaybackAndBeginRecording();
         }
     };
-
+    /**
+     * 播放\暂停按钮点击事件
+     */
     const _onPlayPausePressed = () => {
         if (sound != null) {
             if (state.isPlaying) {
@@ -245,25 +263,35 @@ export default function App() {
             }
         }
     };
-
+    /**
+     * 播放停止按钮点击事件
+     */
     const _onStopPressed = () => {
         if (sound != null) {
             sound.stopAsync();
         }
     };
-
+    /**
+     * 静音按钮点击事件
+     */
     const _onMutePressed = () => {
         if (sound != null) {
             sound.setIsMutedAsync(!state.muted);
         }
     };
-
+    /**
+     * 音量滑块值改变事件
+     * @param value 
+     */
     const _onVolumeSliderValueChange = (value: number) => {
         if (sound != null) {
             sound.setVolumeAsync(value);
         }
     };
-
+    /**
+     * 设置播放速率
+     * @param value 
+     */
     const _trySetRate = async (rate: number, shouldCorrectPitch: boolean) => {
         if (sound != null) {
             try {
@@ -273,15 +301,23 @@ export default function App() {
             }
         }
     };
-
+    /**
+     * 播放速率滑块值改变完成事件
+     * @param value 
+     */
     const _onRateSliderSlidingComplete = async (value: number) => {
         _trySetRate(value * RATE_SCALE, state.shouldCorrectPitch);
     };
-
+    /**
+     * 音量滑块值改变事件
+     */
     const _onPitchCorrectionPressed = () => {
         _trySetRate(state.rate, !state.shouldCorrectPitch);
     };
-
+    /**
+     * 播放进度滑块值改变事件
+     * @param value 
+     */
     const _onSeekSliderValueChange = (value: number) => {
         if (sound != null && !isSeeking) {
             setIsSeeking(true);
@@ -289,7 +325,10 @@ export default function App() {
             sound.pauseAsync();
         }
     };
-
+    /**
+     * 播放进度滑块滑动完成事件
+     * @param value 
+     */
     const _onSeekSliderSlidingComplete = async (value: number) => {
         if (sound != null) {
             setIsSeeking(false);
@@ -301,7 +340,9 @@ export default function App() {
             }
         }
     };
-
+    /**
+     * 获取播放进度滑块位置
+     */
     const _getSeekSliderPosition = () => {
         if (
             sound != null &&
@@ -313,7 +354,11 @@ export default function App() {
         return 0;
     }
 
-
+    /**
+     * 毫秒转换为分钟秒
+     * @param millis 
+     * @returns 
+     */
     const _getMMSSFromMillis = (millis: number) => {
         const totalSeconds = millis / 1000;
         const seconds = Math.floor(totalSeconds % 60);
@@ -328,7 +373,10 @@ export default function App() {
         };
         return padWithZero(minutes) + ":" + padWithZero(seconds);
     }
-
+    /**
+     * 获取播放时间戳
+     * @returns 
+     */
     const _getPlaybackTimestamp = () => {
         if (
             sound != null &&
@@ -341,22 +389,21 @@ export default function App() {
         }
         return "";
     }
-
+    /**
+     * 获取录音时间戳
+     * @returns 
+     */
     const _getRecordingTimestamp = () => {
         if (state.recordingDuration != null) {
             return `${_getMMSSFromMillis(state.recordingDuration)}`;
         }
         return `${_getMMSSFromMillis(0)}`;
     }
-
-
-
-
-
+    // 字体加载失败
     if (!state.fontLoaded) {
         return <View style={styles.emptyContainer} />;
     }
-
+    // 无权限
     if (!state.haveRecordingPermissions) {
         return (
             <View style={styles.container}>
@@ -374,177 +421,181 @@ export default function App() {
             </View>
         );
     }
-
+    // 权限已获取
     return (
-        <View style={styles.container}>
-            <View
-                style={[
-                    styles.halfScreenContainer,
-                    {
-                        opacity: isLoading ? DISABLED_OPACITY : 1.0,
-                    },
-                ]}
-            >
-                <View />
-                <View style={styles.recordingContainer}>
-                    <View />
-                    <TouchableHighlight
-                        underlayColor={BACKGROUND_COLOR}
-                        style={styles.wrapper}
-                        onPress={_onRecordPressed}
-                        disabled={isLoading}
+        <>
+            <ScrollView>
+                <View style={styles.container}>
+                    {/* 录音 */}
+                    <View
+                        style={[
+                            styles.halfScreenContainer,
+                            {
+                                opacity: isLoading ? DISABLED_OPACITY : 1.0,
+                            },
+                        ]}
                     >
-                        <Image style={styles.image} source={Icons.RECORD_BUTTON.module} />
-                    </TouchableHighlight>
-                    <View style={styles.recordingDataContainer}>
                         <View />
-                        <Text
-                            style={[styles.liveText, { fontFamily: "cutive-mono-regular" }]}
-                        >
-                            {state.isRecording ? "LIVE" : ""}
-                        </Text>
-                        <View style={styles.recordingDataRowContainer}>
-                            <Image
-                                style={[
-                                    styles.image,
-                                    { opacity: state.isRecording ? 1.0 : 0.0 },
-                                ]}
-                                source={Icons.RECORDING.module}
-                            />
-                            <Text
-                                style={[
-                                    styles.recordingTimestamp,
-                                    { fontFamily: "cutive-mono-regular" },
-                                ]}
+                        <View style={styles.recordingContainer}>
+                            <View />
+                            <TouchableHighlight
+                                underlayColor={BACKGROUND_COLOR}
+                                style={styles.wrapper}
+                                onPress={_onRecordPressed}
+                                disabled={isLoading}
                             >
-                                {_getRecordingTimestamp()}
-                            </Text>
+                                <Image style={styles.image} source={Icons.RECORD_BUTTON.module} />
+                            </TouchableHighlight>
+                            <View style={styles.recordingDataContainer}>
+                                <View />
+                                <Text
+                                    style={[styles.liveText, { fontFamily: "cutive-mono-regular" }]}
+                                >
+                                    {state.isRecording ? "LIVE" : ""}
+                                </Text>
+                                <View style={styles.recordingDataRowContainer}>
+                                    <Image
+                                        style={[
+                                            styles.image,
+                                            { opacity: state.isRecording ? 1.0 : 0.0 },
+                                        ]}
+                                        source={Icons.RECORDING.module}
+                                    />
+                                    <Text
+                                        style={[
+                                            styles.recordingTimestamp,
+                                            { fontFamily: "cutive-mono-regular" },
+                                        ]}
+                                    >
+                                        {_getRecordingTimestamp()}
+                                    </Text>
+                                </View>
+                                <View />
+                            </View>
+                            <View />
                         </View>
                         <View />
                     </View>
-                    <View />
-                </View>
-                <View />
-            </View>
-            <View
-                style={[
-                    styles.halfScreenContainer,
-                    {
-                        opacity:
-                            !state.isPlaybackAllowed || isLoading
-                                ? DISABLED_OPACITY
-                                : 1.0,
-                    },
-                ]}
-            >
-                <View />
-                <View style={styles.playbackContainer}>
-                    <Slider
-                        style={styles.playbackSlider}
-                        trackImage={Icons.TRACK_1.module}
-                        thumbImage={Icons.THUMB_1.module}
-                        value={_getSeekSliderPosition()}
-                        onValueChange={_onSeekSliderValueChange}
-                        onSlidingComplete={_onSeekSliderSlidingComplete}
-                        disabled={!state.isPlaybackAllowed || isLoading}
-                    />
-                    <Text
+                    {/* 播放 */}
+                    <View
                         style={[
-                            styles.playbackTimestamp,
-                            { fontFamily: "cutive-mono-regular" },
+                            styles.halfScreenContainer,
+                            {
+                                opacity:
+                                    !state.isPlaybackAllowed || isLoading
+                                        ? DISABLED_OPACITY
+                                        : 1.0,
+                            },
                         ]}
                     >
-                        {_getPlaybackTimestamp()}
-                    </Text>
-                </View>
-                <View
-                    style={[styles.buttonsContainerBase, styles.buttonsContainerTopRow]}
-                >
-                    <View style={styles.volumeContainer}>
-                        <TouchableHighlight
-                            underlayColor={BACKGROUND_COLOR}
-                            style={styles.wrapper}
-                            onPress={_onMutePressed}
-                            disabled={!state.isPlaybackAllowed || isLoading}
-                        >
-                            <Image
-                                style={styles.image}
-                                source={
-                                    state.muted
-                                        ? Icons.MUTED_BUTTON.module
-                                        : Icons.UNMUTED_BUTTON.module
-                                }
+                        <View />
+                        <View style={styles.playbackContainer}>
+                            <Slider
+                                style={styles.playbackSlider}
+                                trackImage={Icons.TRACK_1.module}
+                                thumbImage={Icons.THUMB_1.module}
+                                value={_getSeekSliderPosition()}
+                                onValueChange={_onSeekSliderValueChange}
+                                onSlidingComplete={_onSeekSliderSlidingComplete}
+                                disabled={!state.isPlaybackAllowed || isLoading}
                             />
-                        </TouchableHighlight>
-                        <Slider
-                            style={styles.volumeSlider}
-                            trackImage={Icons.TRACK_1.module}
-                            thumbImage={Icons.THUMB_2.module}
-                            value={1}
-                            onValueChange={_onVolumeSliderValueChange}
-                            disabled={!state.isPlaybackAllowed || isLoading}
-                        />
-                    </View>
-                    <View style={styles.playStopContainer}>
-                        <TouchableHighlight
-                            underlayColor={BACKGROUND_COLOR}
-                            style={styles.wrapper}
-                            onPress={_onPlayPausePressed}
-                            disabled={!state.isPlaybackAllowed || isLoading}
+                            <Text
+                                style={[
+                                    styles.playbackTimestamp,
+                                    { fontFamily: "cutive-mono-regular" },
+                                ]}
+                            >
+                                {_getPlaybackTimestamp()}
+                            </Text>
+                        </View>
+                        <View
+                            style={[styles.buttonsContainerBase, styles.buttonsContainerTopRow]}
                         >
-                            <Image
-                                style={styles.image}
-                                source={
-                                    state.isPlaying
-                                        ? Icons.PAUSE_BUTTON.module
-                                        : Icons.PLAY_BUTTON.module
-                                }
+                            <View style={styles.volumeContainer}>
+                                <TouchableHighlight
+                                    underlayColor={BACKGROUND_COLOR}
+                                    style={styles.wrapper}
+                                    onPress={_onMutePressed}
+                                    disabled={!state.isPlaybackAllowed || isLoading}
+                                >
+                                    <Image
+                                        style={styles.image}
+                                        source={
+                                            state.muted
+                                                ? Icons.MUTED_BUTTON.module
+                                                : Icons.UNMUTED_BUTTON.module
+                                        }
+                                    />
+                                </TouchableHighlight>
+                                <Slider
+                                    style={styles.volumeSlider}
+                                    trackImage={Icons.TRACK_1.module}
+                                    thumbImage={Icons.THUMB_2.module}
+                                    value={1}
+                                    onValueChange={_onVolumeSliderValueChange}
+                                    disabled={!state.isPlaybackAllowed || isLoading}
+                                />
+                            </View>
+                            <View style={styles.playStopContainer}>
+                                <TouchableHighlight
+                                    underlayColor={BACKGROUND_COLOR}
+                                    style={styles.wrapper}
+                                    onPress={_onPlayPausePressed}
+                                    disabled={!state.isPlaybackAllowed || isLoading}
+                                >
+                                    <Image
+                                        style={styles.image}
+                                        source={
+                                            state.isPlaying
+                                                ? Icons.PAUSE_BUTTON.module
+                                                : Icons.PLAY_BUTTON.module
+                                        }
+                                    />
+                                </TouchableHighlight>
+                                <TouchableHighlight
+                                    underlayColor={BACKGROUND_COLOR}
+                                    style={styles.wrapper}
+                                    onPress={_onStopPressed}
+                                    disabled={!state.isPlaybackAllowed || isLoading}
+                                >
+                                    <Image style={styles.image} source={Icons.STOP_BUTTON.module} />
+                                </TouchableHighlight>
+                            </View>
+                            <View />
+                        </View>
+                        <View
+                            style={[
+                                styles.buttonsContainerBase,
+                                styles.buttonsContainerBottomRow,
+                            ]}
+                        >
+                            <Text style={styles.timestamp}>Rate:</Text>
+                            <Slider
+                                style={styles.rateSlider}
+                                trackImage={Icons.TRACK_1.module}
+                                thumbImage={Icons.THUMB_1.module}
+                                value={state.rate / RATE_SCALE}
+                                onSlidingComplete={_onRateSliderSlidingComplete}
+                                disabled={!state.isPlaybackAllowed || isLoading}
                             />
-                        </TouchableHighlight>
-                        <TouchableHighlight
-                            underlayColor={BACKGROUND_COLOR}
-                            style={styles.wrapper}
-                            onPress={_onStopPressed}
-                            disabled={!state.isPlaybackAllowed || isLoading}
-                        >
-                            <Image style={styles.image} source={Icons.STOP_BUTTON.module} />
-                        </TouchableHighlight>
+                            <TouchableHighlight
+                                underlayColor={BACKGROUND_COLOR}
+                                style={styles.wrapper}
+                                onPress={_onPitchCorrectionPressed}
+                                disabled={!state.isPlaybackAllowed || isLoading}
+                            >
+                                <Text style={[{ fontFamily: "cutive-mono-regular" }]}>
+                                    PC: {state.shouldCorrectPitch ? "yes" : "no"}
+                                </Text>
+                            </TouchableHighlight>
+                        </View>
+                        <View />
                     </View>
-                    <View />
                 </View>
-                <View
-                    style={[
-                        styles.buttonsContainerBase,
-                        styles.buttonsContainerBottomRow,
-                    ]}
-                >
-                    <Text style={styles.timestamp}>Rate:</Text>
-                    <Slider
-                        style={styles.rateSlider}
-                        trackImage={Icons.TRACK_1.module}
-                        thumbImage={Icons.THUMB_1.module}
-                        value={state.rate / RATE_SCALE}
-                        onSlidingComplete={_onRateSliderSlidingComplete}
-                        disabled={!state.isPlaybackAllowed || isLoading}
-                    />
-                    <TouchableHighlight
-                        underlayColor={BACKGROUND_COLOR}
-                        style={styles.wrapper}
-                        onPress={_onPitchCorrectionPressed}
-                        disabled={!state.isPlaybackAllowed || isLoading}
-                    >
-                        <Text style={[{ fontFamily: "cutive-mono-regular" }]}>
-                            PC: {state.shouldCorrectPitch ? "yes" : "no"}
-                        </Text>
-                    </TouchableHighlight>
-                </View>
-                <View />
-            </View>
-        </View>
+            </ScrollView>
+        </>
     );
-
 }
-
 
 const styles = StyleSheet.create({
     emptyContainer: {
@@ -571,8 +622,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         alignSelf: "stretch",
-        minHeight: DEVICE_HEIGHT / 2.0,
-        maxHeight: DEVICE_HEIGHT / 2.0,
+        minHeight: DEVICE_HEIGHT / 2,
+        maxHeight: DEVICE_HEIGHT / 2,
     },
     recordingContainer: {
         flex: 1,
