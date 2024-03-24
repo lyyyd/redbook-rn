@@ -70,6 +70,20 @@ export default function TabLayout() {
           headerShown: false,
         }}
       />
+      <Tabs.Screen
+        name="accelerometer"
+        options={{
+          title: '加速度计',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="applicationInfo"
+        options={{
+          title: '应用信息',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

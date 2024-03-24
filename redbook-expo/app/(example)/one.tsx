@@ -21,11 +21,17 @@ export default function TabOneScreen() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => {
-        router.push('/three');
-        // router.push("/one");
+        router.push('/accelerometer');
       }}>
         <Text style={styles.tabTxtSelected}>
-          选照片
+          加速度计
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/applicationInfo');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          应用信息
         </Text>
       </TouchableOpacity>
     </View>
