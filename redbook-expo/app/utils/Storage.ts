@@ -1,3 +1,6 @@
+// 异步存储
+// 一个提供异步、未加密、持久的键值存储 API 的库。
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const save = async (key: string, value: string) => {

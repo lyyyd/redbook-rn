@@ -34,6 +34,27 @@ export default function TabOneScreen() {
           应用信息
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/audio');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          音频播放
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/recordEasy');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          录音
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/record');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          录音
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -60,6 +81,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#006adc",
     borderRadius: 10,
+    margin: 10,
   },
   tabTxtSelected: {
     fontSize: 16,

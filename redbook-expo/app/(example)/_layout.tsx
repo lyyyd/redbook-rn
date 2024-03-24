@@ -84,6 +84,27 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="audio"
+        options={{
+          title: '音频播放',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="recordEasy"
+        options={{
+          title: '录音-easy',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="record"
+        options={{
+          title: '录音',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
