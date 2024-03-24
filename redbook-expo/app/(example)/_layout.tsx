@@ -85,7 +85,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="audio"
+        name="av"
         options={{
           title: '音频播放',
           href: null,
@@ -102,6 +102,20 @@ export default function TabLayout() {
         name="record"
         options={{
           title: '录音',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="backgroundFetch"
+        options={{
+          title: '后台任务',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="barometer"
+        options={{
+          title: '气压',
           href: null,
         }}
       />

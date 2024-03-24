@@ -35,17 +35,17 @@ export default function TabOneScreen() {
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => {
-        router.push('/audio');
+        router.push('/av');
       }}>
         <Text style={styles.tabTxtSelected}>
-          音频播放
+          音视频AV频播放
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => {
         router.push('/recordEasy');
       }}>
         <Text style={styles.tabTxtSelected}>
-          录音
+          录音 easy
         </Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => {
@@ -53,6 +53,20 @@ export default function TabOneScreen() {
       }}>
         <Text style={styles.tabTxtSelected}>
           录音
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/backgroundFetch');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          后台任务
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn} onPress={() => {
+        router.push('/barometer');
+      }}>
+        <Text style={styles.tabTxtSelected}>
+          气压
         </Text>
       </TouchableOpacity>
     </View>
