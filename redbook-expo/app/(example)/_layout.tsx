@@ -119,6 +119,41 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="battery"
+        options={{
+          title: '电池',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="blurView"
+        options={{
+          title: '模糊视图',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="brightness"
+        options={{
+          title: '屏幕亮度',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="calendar"
+        options={{
+          title: '日历',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="captureRef"
+        options={{
+          title: '组件截图',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
