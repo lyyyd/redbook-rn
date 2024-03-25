@@ -107,6 +107,13 @@ export default function TabOneScreen() {
               组件截图
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/cellular');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              蜂窝网络
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>

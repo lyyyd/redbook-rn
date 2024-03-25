@@ -4739,6 +4739,11 @@ expo-camera@~14.1.1:
   dependencies:
     invariant "^2.2.4"
 
+expo-cellular@^5.7.1:
+  version "5.7.1"
+  resolved "https://registry.npmmirror.com/expo-cellular/-/expo-cellular-5.7.1.tgz#9ad48429d77642e3de0c6a6c9ee7b7584deb7371"
+  integrity sha512-x+GI3W39hRLLyh37Nfewb78X8OpzGvpr7rjCxF6Ml4IZttYTXtV3Q35pBHtIvzzTtTbr+tT0+bdzhnJrhYD7PQ==
+
 expo-constants@~15.4.0, expo-constants@~15.4.3:
   version "15.4.5"
   resolved "https://registry.npmmirror.com/expo-constants/-/expo-constants-15.4.5.tgz#81756a4c4e1c020f840a419cd86a124a6d1fb35b"

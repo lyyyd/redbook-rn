@@ -154,6 +154,13 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="cellular"
+        options={{
+          title: '蜂窝网络',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
