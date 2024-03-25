@@ -4712,6 +4712,11 @@ expo-background-fetch@^11.8.1:
   dependencies:
     expo-task-manager "~11.7.2"
 
+expo-battery@^7.7.2:
+  version "7.7.2"
+  resolved "https://registry.npmmirror.com/expo-battery/-/expo-battery-7.7.2.tgz#828739641810df4a0a662561da983ccfb6de1338"
+  integrity sha512-Bo4X10m04oPS1B7g78EWO2KHIMaO9ZHNEgoD0C/8YpjkdJmbDkfVwO2i/uVtzV74zpV3M6TlAnWRPNsKMUMxZQ==
+
 expo-camera@~14.1.1:
   version "14.1.1"
   resolved "https://registry.npmmirror.com/expo-camera/-/expo-camera-14.1.1.tgz#f500c37dc112090bd5d2f30917087f7faf59318b"
