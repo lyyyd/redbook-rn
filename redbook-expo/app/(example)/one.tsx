@@ -114,6 +114,13 @@ export default function TabOneScreen() {
               蜂窝网络
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/checkbox');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              复选框
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>

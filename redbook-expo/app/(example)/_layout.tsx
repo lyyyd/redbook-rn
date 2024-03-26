@@ -161,6 +161,13 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="checkbox"
+        options={{
+          title: '复选框',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
