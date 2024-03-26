@@ -168,6 +168,13 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="clipboard"
+        options={{
+          title: '粘贴板',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

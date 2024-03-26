@@ -121,6 +121,13 @@ export default function TabOneScreen() {
               复选框
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/clipboard');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              粘贴板
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>
