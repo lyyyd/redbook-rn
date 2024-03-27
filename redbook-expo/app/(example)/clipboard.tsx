@@ -34,6 +34,7 @@ export default function App() {
     };
     const fetchCopiedUrl = async () => {
         const url = await Clipboard.getUrlAsync();
+        console.log('fetchCopiedUrl', url);
         setCopiedUrl(url);
     };
 
@@ -46,10 +47,12 @@ export default function App() {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             base64: true,
         });
-        await Clipboard.setImageAsync(result.base64);
+        console.log('copyImageToClipboard', result.assets[0].uri);
+        await Clipboard.setImageAsync(result.assets[0].base64);
     };
     const fetchCopiedImage = async () => {
-        const image = await Clipboard.getImageAsync({ format: 'png' });
+        const image = await Clipboard.getImageAsync({ format: 'jpeg' });
+        console.log('fetchCopiedImage', image);
         setCopiedImage(image);
     };
 

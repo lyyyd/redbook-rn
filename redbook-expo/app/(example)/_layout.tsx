@@ -175,6 +175,41 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="contacts"
+        options={{
+          title: '联系方式',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="crypto"
+        options={{
+          title: '加密 crypto',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="dateTimePicker"
+        options={{
+          title: '日期选择',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="device"
+        options={{
+          title: '设备',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="devicemotion"
+        options={{
+          title: '设备运动',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

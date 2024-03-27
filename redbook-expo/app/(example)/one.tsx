@@ -128,6 +128,41 @@ export default function TabOneScreen() {
               粘贴板
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/contacts');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              联系方式
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/crypto');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              加密 crypto
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/dateTimePicker');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              日期选择
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/device');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              设备
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/devicemotion');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              设备运动
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>

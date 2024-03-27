@@ -54,6 +54,18 @@
         {
           "calendarPermission": "The app needs to access your calendar."
         }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Allow $(PRODUCT_NAME) to access your contacts."
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
+        }
       ]
     ],
     "experiments": {
