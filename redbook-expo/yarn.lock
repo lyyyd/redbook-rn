@@ -2682,6 +2682,14 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
+"@shopify/flash-list@^1.6.4":
+  version "1.6.4"
+  resolved "https://registry.npmmirror.com/@shopify/flash-list/-/flash-list-1.6.4.tgz#2844ae7334f314c06c62b649bc9c5de2480800b4"
+  integrity sha512-M2momcnY7swsvmpHIFDVbdOaFw4aQocJXA/lFP0Gpz+alQjFylqVKvszxl4atYO2SNbjxlb2L6hEP9WEcAknGQ==
+  dependencies:
+    recyclerlistview "4.2.0"
+    tslib "2.4.0"
+
 "@sideway/address@^4.1.5":
   version "4.1.5"
   resolved "https://registry.npmmirror.com/@sideway/address/-/address-4.1.5.tgz#4bc149a0076623ced99ca8208ba780d65a99b9d5"
@@ -5124,10 +5132,20 @@ expo-device@^5.9.3:
   dependencies:
     ua-parser-js "^0.7.33"
 
+expo-document-picker@^11.10.1:
+  version "11.10.1"
+  resolved "https://registry.npmmirror.com/expo-document-picker/-/expo-document-picker-11.10.1.tgz#03394d77842a2fd7cb0a784a60098ee1ddd1012e"
+  integrity sha512-A1MiLfyXQ+KxanRO5lYxYQy3ryV+25JHe5Ai/BLV+FJU0QXByUF+Y/dn35WVPx5gpdZXC8UJ4ejg5SKSoeconw==
+
 expo-eas-client@~0.11.0:
   version "0.11.2"
   resolved "https://registry.npmmirror.com/expo-eas-client/-/expo-eas-client-0.11.2.tgz#2e8d6f347dcea38b58c2b6a21db7c632383fb1ba"
   integrity sha512-SY7rVFxb4ut/OMTgR7A39Jg+8+hXwQNRpZd+RBpB+B5XV2STj/pWXHnGFhBayEF4umI4SxrOvisY90rlPWVO9Q==
+
+expo-face-detector@^12.6.1:
+  version "12.6.1"
+  resolved "https://registry.npmmirror.com/expo-face-detector/-/expo-face-detector-12.6.1.tgz#5337d128982e4d4ec83cd1468ddeec9d71d808a9"
+  integrity sha512-I3luwDQK53YvMz0zdfAVWf+gTGkfPpfSieK7/NU26RGj5tc4HTxo9UeBa6YCcnPpeJ5dqeKF8TBELRrP2Eb2Aw==
 
 expo-file-system@^16.0.8, expo-file-system@~16.0.0, expo-file-system@~16.0.8:
   version "16.0.8"
@@ -7236,7 +7254,7 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash.debounce@^4.0.8:
+lodash.debounce@4.0.8, lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.npmmirror.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
@@ -8469,7 +8487,7 @@ prompts@^2.0.1, prompts@^2.2.1, prompts@^2.3.2, prompts@^2.4.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@15.8.1, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmmirror.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -8870,6 +8888,15 @@ rechoir@^0.6.2:
   integrity sha512-HFM8rkZ+i3zrV+4LQjwQ0W+ez98pApMGM3HUrN04j3CqzPOzl9nmP15Y8YXNm8QHGv/eacOVEjqhmWpkRV0NAw==
   dependencies:
     resolve "^1.1.6"
+
+recyclerlistview@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.npmmirror.com/recyclerlistview/-/recyclerlistview-4.2.0.tgz#a140149aaa470c9787a1426452651934240d69ef"
+  integrity sha512-uuBCi0c+ggqHKwrzPX4Z/mJOzsBbjZEAwGGmlwpD/sD7raXixdAbdJ6BTcAmuWG50Cg4ru9p12M94Njwhr/27A==
+  dependencies:
+    lodash.debounce "4.0.8"
+    prop-types "15.8.1"
+    ts-object-utils "0.0.5"
 
 reflect.getprototypeof@^1.0.4:
   version "1.0.6"
@@ -9946,6 +9973,16 @@ ts-interface-checker@^0.1.9:
   version "0.1.13"
   resolved "https://registry.npmmirror.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
+
+ts-object-utils@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npmmirror.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"
+  integrity sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==
+
+tslib@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tslib@^1.8.1:
   version "1.14.1"

@@ -163,6 +163,13 @@ export default function TabOneScreen() {
               设备运动
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/documentPicker');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              文件选择
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>

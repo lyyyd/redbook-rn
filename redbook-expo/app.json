@@ -66,6 +66,12 @@
         {
           "motionPermission": "Allow $(PRODUCT_NAME) to access your device motion."
         }
+      ],
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
       ]
     ],
     "experiments": {
