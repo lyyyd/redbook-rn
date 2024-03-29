@@ -170,6 +170,13 @@ export default function TabOneScreen() {
               文件选择
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/font');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              字体
+            </Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>
