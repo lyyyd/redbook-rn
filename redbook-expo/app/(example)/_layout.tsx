@@ -210,6 +210,293 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="documentPicker"
+        options={{
+          title: '文件选择',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="facedetector"
+        options={{
+          title: '人脸检测',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="filesystem"
+        options={{
+          title: '文件系统',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="flashList"
+        options={{
+          title: 'flashList',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="font"
+        options={{
+          title: '字体',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="gesture-handler"
+        options={{
+          title: '手势',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="gl-view"
+        options={{
+          title: 'gl-view',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="gyroscope"
+        options={{
+          title: '陀螺仪',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="haptics"
+        options={{
+          title: '触觉',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="image"
+        options={{
+          title: '图片',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="image-manipulator"
+        options={{
+          title: '图片处理',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="image-picker"
+        options={{
+          title: '图片选择',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="intent-launcher"
+        options={{
+          title: '系统页面',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="keep-awake"
+        options={{
+          title: '保持唤醒',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="light-sensor"
+        options={{
+          title: '',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="光源"
+        options={{
+          title: '',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="linear-gradient"
+        options={{
+          title: '渐变色',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="location"
+        options={{
+          title: '位置',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="lottie"
+        options={{
+          title: 'lottie',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="magnetometer"
+        options={{
+          title: 'magnetometer',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="mail-composer"
+        options={{
+          title: 'mail',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="map-view"
+        options={{
+          title: '地图',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="media-library"
+        options={{
+          title: '媒体库',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: '通知',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="pedometer"
+        options={{
+          title: '计步器',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="print"
+        options={{
+          title: '打印',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="reanimated"
+        options={{
+          title: '动画',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="screen-capture"
+        options={{
+          title: '阻止截图',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="secure-store"
+        options={{
+          title: '安全存储',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="speech"
+        options={{
+          title: '文本转语音',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="splash-screen"
+        options={{
+          title: 'splash-screen',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="status-bar"
+        options={{
+          title: '状态栏',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="svg"
+        options={{
+          title: 'svg',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="task-manager"
+        options={{
+          title: '任务管理',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="tracking-transparency"
+        options={{
+          title: '跟踪透明度',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="updates"
+        options={{
+          title: '更新',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="video-thumbnails"
+        options={{
+          title: '视频缩略图',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="video"
+        options={{
+          title: '视频',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="view-pager"
+        options={{
+          title: '类轮播',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="web-browser"
+        options={{
+          title: 'web-browser',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="webview"
+        options={{
+          title: 'webview',
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }
