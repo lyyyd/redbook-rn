@@ -171,12 +171,111 @@ export default function TabOneScreen() {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/facedetector');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              人脸检测
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/filesystem');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              文件系统
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/flashList');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              flashList
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
             router.push('/font');
           }}>
             <Text style={styles.tabTxtSelected}>
               字体
             </Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/gesture-handler');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              手势
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/gl-view');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              gl-view
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/gyroscope');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              陀螺仪
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/haptics');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              触觉
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/image');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              图片
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/image-manipulator');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              图片处理
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/image-picker');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              图片选择
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/intent-launcher');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              系统页面
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/keep-awake');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              保持唤醒
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/light-sensor');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              光源
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} onPress={() => {
+            router.push('/linear-gradient');
+          }}>
+            <Text style={styles.tabTxtSelected}>
+              渐变色
+            </Text>
+          </TouchableOpacity>
+
         </View>
       </ScrollView>
     </>
