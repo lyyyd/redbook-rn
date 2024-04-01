@@ -382,10 +382,24 @@ export default function TabOneScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/stripe');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                stripe
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
               router.push('/svg');
             }}>
               <Text style={styles.tabTxtSelected}>
                 svg
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/system-ui');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                system-ui
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn} onPress={() => {
@@ -407,6 +421,13 @@ export default function TabOneScreen() {
             }}>
               <Text style={styles.tabTxtSelected}>
                 更新
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/url');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                url
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn} onPress={() => {

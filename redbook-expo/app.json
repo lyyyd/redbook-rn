@@ -107,6 +107,13 @@
         {
           "username": "account-username"
         }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant-identifier",
+          "enableGooglePay": true
+        }
       ]
     ],
     "experiments": {
