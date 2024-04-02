@@ -375,6 +375,27 @@ export default function TabOneScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/sqlite-next-hooks');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                sqlite-next-hooks
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/sqlite-next');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                sqlite-next
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/sqlite');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                sqlite
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
               router.push('/status-bar');
             }}>
               <Text style={styles.tabTxtSelected}>

@@ -8,6 +8,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import * as StoreReview from 'expo-store-review';
+import { useEffect } from 'react';
 
 export default function TabTwoScreen() {
     const androidPackageName = 'host.exp.exponent';
@@ -20,7 +21,15 @@ export default function TabTwoScreen() {
 
 
     // StoreReview.hasAction()
+    const checkIfHasAction = async () => {
+        const hasAction = await StoreReview.hasAction();
+        console.log(hasAction);
+    }
     // StoreReview.isAvailableAsync()
+    const checkIfAvailable = async () => {
+        const isAvailable = await StoreReview.isAvailableAsync();
+        console.log(isAvailable);
+    }
     // StoreReview.requestReview()
     const goGooglePayReview = async () => {
         try {
@@ -30,16 +39,50 @@ export default function TabTwoScreen() {
         }
     }
     // StoreReview.storeUrl()
+    const getStoreUrl = () => {
+        const url = StoreReview.storeUrl();
+        console.log(url);
+    }
+
+    useEffect(() => {
+        (async () => {
+            try {
+                await StoreReview.requestReview();
+            } catch (error) {
+                console.log('Error', error);
+            }
+        })();
+    }, []);
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Tab Two</Text>
 
             <TouchableOpacity style={styles.btn} onPress={() => {
+                checkIfHasAction();
+            }}>
+                <Text style={styles.tabTxtSelected}>
+                    checkIfHasAction
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
                 goGooglePayReview();
-                // router.push("/one");
             }}>
                 <Text style={styles.tabTxtSelected}>
                     requestReview
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+                checkIfAvailable();
+            }}>
+                <Text style={styles.tabTxtSelected}>
+                    checkIfAvailable
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
+                getStoreUrl();
+            }}>
+                <Text style={styles.tabTxtSelected}>
+                    getStoreUrl
                 </Text>
             </TouchableOpacity>
         </View>
