@@ -382,6 +382,13 @@ export default function TabOneScreen() {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btn} onPress={() => {
+              router.push('/store-review');
+            }}>
+              <Text style={styles.tabTxtSelected}>
+                store-review
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn} onPress={() => {
               router.push('/stripe');
             }}>
               <Text style={styles.tabTxtSelected}>
