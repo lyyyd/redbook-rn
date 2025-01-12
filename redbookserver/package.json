@@ -2,7 +2,7 @@
   "name": "RedBookServer",
   "version": "1.0.0",
   "description": "小红书仿写服务端",
-  "localHost": "http://192.168.2.20",
+  "localHost": "http://192.168.2.9",
   "private": true,
   "egg": {
     "typescript": true
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-RedBookServer",
     "stop": "egg-scripts stop --title=egg-server-RedBookServer",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port=10082",
     "test-local": "egg-bin test -p",
     "test": "npm run lint -- --fix && npm run test-local",
     "cov": "egg-bin cov -p",

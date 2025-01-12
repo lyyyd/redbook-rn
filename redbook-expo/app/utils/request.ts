@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from 'axios'
 import Apis from '../api/Apis'
 
 const instance = axios.create({
-  baseURL: 'http://192.168.2.20:7001',
-  // baseURL: 'http://localhost:7001',
+  baseURL: 'http://192.168.2.9:10082',
+  // baseURL: 'http://localhost:10082',
   timeout: 10 * 1000
 })
 

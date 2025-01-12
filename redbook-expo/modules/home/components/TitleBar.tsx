@@ -67,7 +67,9 @@ export default ({ tab, onTabChanged }: Props) => {
         {tabIndex === 2 && <View style={styles.line} />}
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.searchButton}>
+      <TouchableOpacity style={styles.searchButton} onPress={() => {
+        router.push("/shanbay/one");
+      }}>
         <Image style={styles.icon} source={icon_search} />
       </TouchableOpacity>
     </View>
