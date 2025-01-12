@@ -1,31 +1,25 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+// import { Text, View } from '@/components/Themed';
 import { useRouter } from 'expo-router';
 import { ScrollView } from 'react-native';
+
+import { View, Text } from 'react-native';
 
 export default function TabOneScreen() {
   const router = useRouter();
   return (
     <>
       <ScrollView>
-        <View style={styles.container}>
-          {/* <Text style={styles.title}>Tab One</Text>
-          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-          <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
 
-          <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btn} onPress={() => {
-              router.push('/camera');
-              // router.push("/one");
-            }}>
-              <Text style={styles.tabTxtSelected}>
-                相机
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+      <View className="items-center justify-center flex-1 font-bold underline text-bold">
+        <Text>Open up App</Text>
+      </View>
+
+      <View className="items-center justify-center flex-1 bg-emerald-400">
+        <Text className="text-2xl font-bold text-white">Hello, NativeWind!</Text>
+      </View>
       </ScrollView>
     </>
   );

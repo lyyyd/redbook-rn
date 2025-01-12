@@ -15,6 +15,7 @@ import {
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 import { View } from "@/components/Themed";
+import "../global.css"
 
 export {
   // Catch any errors thrown by the Layout component.
