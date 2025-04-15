@@ -18,14 +18,14 @@ export class ArticleService {
   // 文章详情
   async getArticleDetail(id: number): Promise<Article> {
     await sleep(1000);
-    const find: Article | undefined = articles.find(i => i.id === id);
+    const find: Article | undefined = articles.find((i: any) => i.id === id);
     if (!find) {
         return {} as Article;
     }
     const article = JSON.parse(JSON.stringify(find))
     article.avatarUrl = `http://${this.host}/public${find.avatarUrl}`;
-    article.images = article.images.map(i => `http://${this.host}/public${i}`);
-    article.comments = article.comments ? article.comments.map(i => {
+    article.images = article.images.map((i: any) => `http://${this.host}/public${i}`);
+    article.comments = article.comments ? article.comments.map((i: any) => {
         return {
             ...i,
             avatarUrl: `http://${this.host}/public${i.avatarUrl}`
